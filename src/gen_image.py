@@ -19,7 +19,7 @@ class Sprite:
     __CSS_CLASS_TEMPLATE = ".{CLASS_NAME}{{background-position: {POSITION_X}px {POSITION_Y}px }}"
 
     def __init__(self, paths, sprite_path=None, 
-                 sprite_name=None, image_format="RGBA", css_name="sprite.css"):
+                 sprite_name=None, image_format="RGBA", css_path="", css_name="sprite.css"):
         self.images = []
         self.height = 0
         self.width = 0
@@ -38,6 +38,7 @@ class Sprite:
 
         self.image_format = image_format
         self.css_name = css_name
+        self.css_path = css_path
         self._set_sprite_image_demision()
 
     def _set_sprite_image_demision(self):
@@ -69,7 +70,7 @@ class Sprite:
     def do_write_css(self, css_name=None):
         if not css_name:
             css_name = self.css_name
-        path = self.sprite_path+css_name
+        path = self.css_path+css_name
         css_f = open(path,"w")
         css = self.get_css()
         css_f.write(css)
@@ -85,6 +86,8 @@ class Sprite:
             width += image.width
 
     def do_write_image(self):
+        if not hasattr(self, "image"):
+            self.gen_image()
         path = os.path.join(self.sprite_path, self.sprite_name)
         self.image.save(path, "PNG")
 

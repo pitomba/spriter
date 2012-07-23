@@ -80,16 +80,16 @@ class Sprite:
         self.image = Image.new("RGBA", (self.width, self.height))
         width = 0
         for image in self.images:
+            
             self.image.paste(image.raw,
-                             (width, 0),
-                             image.raw)
+                             (width, 0))#,image.raw)
             width += image.width
 
     def do_write_image(self):
         if not hasattr(self, "image"):
             self.gen_image()
         path = os.path.join(self.sprite_path, self.sprite_name)
-        self.image.save(path, "PNG")
+        self.image.save(path, "PNG", options='optimize')
 
     def gen_sprite(self):
         self.do_write_css()

@@ -5,15 +5,22 @@ import os
 import time
 
 config = ConfigParser.ConfigParser()
-config.readfp(open('config.cfg'))
-img_dir = config.get("dirs", "img")
+
+config_file = os.path.abspath(os.curdir) + "/config.cfg"
+config.readfp(open(config_file, "r"))
+
+img_dir = config.get("dirs", "img_dir")
+css_dir = config.get("dirs", "css_dir")
+sprite_dir = config.get("dirs", "sprite_dir")
+class_base = config.get("dirs", "class_base")
 
 class Handler:
     def dispatch(self, event):
+
         if not event.is_directory:
             path = os.path.dirname(event.src_path)
             files = [os.path.join(path,arq) for arq in os.listdir(path)]
-            sprite = Sprite(files)
+            sprite = Sprite(files, css_path=css_dir, sprite_path=sprite_dir, class_base=class_base)
             sprite.gen_sprite()
 
 if __name__ == "__main__":

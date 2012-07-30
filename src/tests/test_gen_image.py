@@ -1,3 +1,4 @@
+from PIL import Image
 from gen_image import Sprite
 import os
 

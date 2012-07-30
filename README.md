@@ -8,3 +8,5 @@ Quick start
 =================
 
 Clone the repo, `git clone git://github.com/pitomba/spriter.git`
+
+pip install -r requirements.txt

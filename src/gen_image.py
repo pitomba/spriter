@@ -17,12 +17,12 @@ class FileImage:
 
 class Sprite:
 
-    __CSS_TEMPLATE = "{CLASSES}{{background:url({ROOT_PATH}{SPRITE_NAME}) 0 0 no-repeat}}"
+    __CSS_TEMPLATE = ".{CLASSES}{{background:url({ROOT_PATH}{SPRITE_NAME}) 0 0 no-repeat}}"
     __CSS_CLASS_TEMPLATE = ".{CLASS_NAME}{{background-position: {POSITION_X}px {POSITION_Y}px }}"
 
     def __init__(self, paths, sprite_path=None,
                  sprite_name=None, image_format="RGBA", css_path="", 
-                 class_base="", css_name="sprite.css"):
+                 class_base="sprite", css_name="sprite.css"):
 
         self.images = []
         self.height = 0
@@ -58,12 +58,10 @@ class Sprite:
             self.width += image.width
 
     def get_css(self):
-
-        classes = []
+        """given the sprite's css string"""
         css_line = []
 
         for image in self.images:
-            classes.append("."+image.class_name)
             css_line.append(self.__CSS_CLASS_TEMPLATE.format(CLASS_NAME=image.class_name,
                                                            POSITION_X=image.sprite_coordinate_x,
                                                            POSITION_Y=image.sprite_coordinate_y))
@@ -77,7 +75,7 @@ class Sprite:
         return css
 
     def do_write_css(self, css_name=None):
-
+        """Write css's file"""
         if not css_name:
             css_name = self.css_name
 

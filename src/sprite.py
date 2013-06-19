@@ -2,10 +2,11 @@ from PIL import Image
 import os
 
 
-class URLImage:
+class URLImage(object):
     pass
 
-class FileImage:
+
+class FileImage(object):
 
     def __init__(self, path):
         self.raw = Image.open(path)
@@ -15,13 +16,14 @@ class FileImage:
         self.sprite_coordinate_y = None
         self.class_name = os.path.basename(path).split(".")[0]
 
-class Sprite:
+
+class Sprite(object):
 
     __CSS_TEMPLATE = ".{CLASSES}{{background:url({ROOT_PATH}{SPRITE_NAME}) 0 0 no-repeat}}"
     __CSS_CLASS_TEMPLATE = ".{CLASS_NAME}{{background-position: {POSITION_X}px {POSITION_Y}px }}"
 
     def __init__(self, paths, sprite_path=None,
-                 sprite_name=None, image_format="RGBA", css_path="", 
+                 sprite_name=None, image_format="RGBA", css_path="",
                  class_base="sprite", css_name="sprite.css"):
 
         self.images = []

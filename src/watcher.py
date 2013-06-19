@@ -14,13 +14,15 @@ css_dir = config.get("dirs", "css_dir")
 sprite_dir = config.get("dirs", "sprite_dir")
 class_base = config.get("dirs", "class_base")
 
-class Handler:
+
+class Handler(object):
     def dispatch(self, event):
 
         if not event.is_directory:
             path = os.path.dirname(event.src_path)
-            files = [os.path.join(path,arq) for arq in os.listdir(path)]
-            sprite = Sprite(files, css_path=css_dir, sprite_path=sprite_dir, class_base=class_base)
+            files = [os.path.join(path, arq) for arq in os.listdir(path)]
+            sprite = Sprite(files, css_path=css_dir, sprite_path=sprite_dir,
+                            class_base=class_base)
             sprite.gen_sprite()
 
 if __name__ == "__main__":

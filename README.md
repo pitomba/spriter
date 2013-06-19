@@ -3,6 +3,7 @@ Pitomba Sprite Generator
 
 Pitomba provides simple and flexible sprite generator for CSS, using Python.
 
+https://travis-ci.org/romulojales/pitomba.png
 
 Quick start
 =================

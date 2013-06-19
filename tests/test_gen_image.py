@@ -17,7 +17,7 @@ class TestSprite(unittest.TestCase):
         paths = ["tests/sad.png", "tests/happy.png"]
         sprite = Sprite(paths)
         css = sprite.get_css()
-        self.assertEquals(css, ".sprite{background:url(/Users/romulo.jales/projetos/pitombasprite.png) 0 0 no-repeat}\n.sad{background-position: 0px 0px }\n.happy{background-position: -64px 0px }")
+        self.assertEquals(css, ".sprite{background:url(%ssprite.png) 0 0 no-repeat}\n.sad{background-position: 0px 0px }\n.happy{background-position: -64px 0px }" % os.getcwd())
 
     def test_do_write_css(self):
         paths = ["tests/sad.png", "tests/happy.png"]
@@ -38,6 +38,6 @@ class TestSprite(unittest.TestCase):
     def test_do_write_image(self):
 
         paths = ["tests/sad.png", "tests/happy.png"]
-        sprite = Sprite(paths, sprite_path=os.getcwd()+"/tests/")
+        sprite = Sprite(paths, sprite_path=os.getcwd() + "/tests/")
         sprite.do_write_image()
         sprite.gen_image()

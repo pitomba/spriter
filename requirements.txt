@@ -1,4 +1,4 @@
-PIL==1.1.7
+pillow==2.0.0
 nose==1.1.2
 PyYAML==3.10
 pathtools==0.1.2

@@ -1,3 +1,7 @@
+.settings
+build
+spriter.egg-info/
+spriter.css
 *.pyc
 .DS_STORE
 .project

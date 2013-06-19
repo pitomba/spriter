@@ -3,12 +3,14 @@ from src.sprite import Sprite
 import os
 import unittest
 
+
 class TestSprite(unittest.TestCase):
     def test_demission_sprite(self):
         """Tests width and height after gen sprite"""
         paths = ["tests/sad.png", "tests/happy.png"]
         sprite = Sprite(paths)
-        assert sprite.width == 64 + 64 #128 each image has 64 px
+        #128 each image has 64 px
+        assert sprite.width == 64 + 64
         assert sprite.height == 64
 
     def test_css_format(self):
@@ -16,19 +18,16 @@ class TestSprite(unittest.TestCase):
         sprite = Sprite(paths)
         css = sprite.get_css()
         self.assertEquals(css, ".sprite{background:url(/Users/romulo.jales/projetos/pitombasprite.png) 0 0 no-repeat}\n.sad{background-position: 0px 0px }\n.happy{background-position: -64px 0px }")
-        
-    
-    
+
     def test_do_write_css(self):
         paths = ["tests/sad.png", "tests/happy.png"]
-        sprite = Sprite(paths, sprite_path=os.getcwd()+"/tests/")
+        sprite = Sprite(paths, sprite_path=os.getcwd() + "/tests/")
         sprite.do_write_css()
-        assert os.path.exists(os.getcwd()+"/tests/sprite.css")
-    
-    
+        assert os.path.exists(os.getcwd() + "/tests/sprite.css")
+
     def test_gen_image(self):
         paths = ["tests/sad.png", "tests/happy.png"]
-        sprite = Sprite(paths, sprite_path=os.getcwd()+"/tests/")
+        sprite = Sprite(paths, sprite_path=os.getcwd() + "/tests/")
         sprite.gen_image()
         assert sprite.image.size[0] == 128
         assert sprite.image.size[1] == 64

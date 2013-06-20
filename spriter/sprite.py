@@ -100,15 +100,14 @@ class Sprite(object):
             width += image.width
 
     def do_write_image(self):
-
         if not hasattr(self, "image"):
             self.gen_image()
-
+        if not os.path.exists(self.sprite_path):
+            os.makedirs(self.sprite_path)
         path = os.path.join(self.sprite_path, self.sprite_name)
         self.image.save(path, "PNG", options='optimize')
         return path
 
     def gen_sprite(self):
-
         self.do_write_css()
         self.do_write_image()

@@ -83,7 +83,7 @@ class Sprite(object):
 
         path = os.path.abspath(os.curdir) + "/" + self.css_path + css_name
 
-        css_f = open(path,"w")
+        css_f = open(path, "w")
         css = self.get_css()
         css_f.write(css)
         css_f.close()
@@ -106,6 +106,7 @@ class Sprite(object):
 
         path = os.path.join(self.sprite_path, self.sprite_name)
         self.image.save(path, "PNG", options='optimize')
+        return path
 
     def gen_sprite(self):
 

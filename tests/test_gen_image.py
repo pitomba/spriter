@@ -1,5 +1,5 @@
 from PIL import Image
-from src.sprite import Sprite
+from spriter.sprite import Sprite
 import os
 import unittest
 
@@ -39,5 +39,6 @@ class TestSprite(unittest.TestCase):
 
         paths = ["tests/sad.png", "tests/happy.png"]
         sprite = Sprite(paths, sprite_path=os.getcwd() + "/tests/")
-        sprite.do_write_image()
+        path = sprite.do_write_image()
         sprite.gen_image()
+        self.assertTrue(os.path.exists(path))

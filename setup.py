@@ -15,7 +15,7 @@ setup(
     classifiers=['Development Status :: 5 - Production/Stable',
                    'Intended Audience :: Developers'],
     packages=find_packages(),
-    package_dir={"spriter": "src"},
+    package_dir={"spriter": "spriter"},
     include_package_data=True,
     test_suite="tests"
 )

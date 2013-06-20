@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 setup(
     name=u'spriter',
-    version="0.0.1",
+    version="0.0.2",
     description=u"Pitomba's sprite generato",
     long_description=u"""Pitomba provides simple and flexible sprite generator for CSS, using Python.""",
     keywords='pitomba sprite css images',

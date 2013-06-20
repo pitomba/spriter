@@ -70,10 +70,8 @@ class Sprite(object):
         base = self.__CSS_TEMPLATE.format(CLASSES=self.class_base,
                                        ROOT_PATH=self.sprite_path,
                                        SPRITE_NAME=self.sprite_name)
-
         css_line.insert(0, base)
-        css = "\n".join(css_line)
-
+        css = "".join(css_line)
         return css
 
     def do_write_css(self, css_name=None):

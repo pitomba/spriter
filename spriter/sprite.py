@@ -23,8 +23,9 @@ class Sprite(object):
     __CSS_CLASS_TEMPLATE = ".{CLASS_NAME}{{background-position: {POSITION_X}px {POSITION_Y}px }}"
 
     def __init__(self, paths, sprite_path=None,
-                 sprite_name=None, image_format="RGBA", css_path="",
-                 class_base="sprite", css_name="sprite.css"):
+                 sprite_name=None,
+                 sprite_url=None, image_format="RGBA", css_path="",
+                 class_name="sprite", css_name="sprite.css"):
 
         self.images = []
         self.height = 0
@@ -35,7 +36,10 @@ class Sprite(object):
             self.sprite_path = sprite_path
         else:
             self.sprite_path = os.getcwd()
-
+        if sprite_url:
+            self.sprite_url = sprite_url
+        else:
+            self.sprite_url = self.sprite_path
         if sprite_name:
             self.sprite_name = sprite_name
         else:
@@ -43,7 +47,7 @@ class Sprite(object):
 
         self.image_format = image_format
         self.css_name = css_name
-        self.class_base = class_base
+        self.class_name = class_name
         self.css_path = css_path
         self._set_sprite_image_demision()
 
@@ -67,8 +71,8 @@ class Sprite(object):
             css_line.append(self.__CSS_CLASS_TEMPLATE.format(CLASS_NAME=image.class_name,
                                                            POSITION_X=image.sprite_coordinate_x,
                                                            POSITION_Y=image.sprite_coordinate_y))
-        base = self.__CSS_TEMPLATE.format(CLASSES=self.class_base,
-                                       ROOT_PATH=self.sprite_path,
+        base = self.__CSS_TEMPLATE.format(CLASSES=self.class_name,
+                                       ROOT_PATH=self.sprite_url,
                                        SPRITE_NAME=self.sprite_name)
         css_line.insert(0, base)
         css = "".join(css_line)

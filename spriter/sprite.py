@@ -19,8 +19,8 @@ class FileImage(object):
 
 class Sprite(object):
 
-    __CSS_TEMPLATE = ".{CLASSES}{{background:url({ROOT_PATH}{SPRITE_NAME}) 0 0 no-repeat}}"
-    __CSS_CLASS_TEMPLATE = ".{CLASS_NAME}{{background-position: {POSITION_X}px {POSITION_Y}px }}"
+    __CSS_TEMPLATE = ".{CLASSES}{{background:url(\"{ROOT_PATH}{SPRITE_NAME}\") 0 0 no-repeat}}"
+    __CSS_CLASS_TEMPLATE = ".{CLASS_NAME}{{background-position: {POSITION_X}px {POSITION_Y}px}}"
 
     def __init__(self, paths, sprite_path=None,
                  sprite_name=None,

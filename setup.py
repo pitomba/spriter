@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 
 from setuptools import setup, find_packages
+from spriter import VERSION
 
 setup(
     name=u'spriter',
-    version="0.0.3",
+    version=VERSION,
     description=u"Pitomba's sprite generato",
     long_description=u"""Pitomba provides simple and flexible sprite generator for CSS, using Python.""",
     keywords='pitomba sprite css images',

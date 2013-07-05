@@ -7,9 +7,10 @@ setup(
     name=u'spriter',
     version=VERSION,
     description=u"Pitomba's sprite generato",
-    long_description=u"""Pitomba provides simple and flexible sprite generator for CSS, using Python.""",
+    long_description=u"""Pitomba provides simple and flexible sprite generator
+                        for CSS, using Python.""",
     keywords='pitomba sprite css images',
-    author=u'Rômulo Jales',
+    author=u'Romulo Jales',
     author_email='romulo@romulojales.com',
     url='https://github.com/pitomba/pitomba',
     license='Public',

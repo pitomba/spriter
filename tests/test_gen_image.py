@@ -25,7 +25,8 @@ class TestSprite(unittest.TestCase):
     def test_css_format(self):
         sprite = Sprite(self.paths)
         css = sprite.get_css()
-        self.assertEquals(css, ".sprite{background:url(\"%ssprite.png\") 0 0 no-repeat}.sad{background-position: 0px 0px}.happy{background-position: -64px 0px}" % os.getcwd())
+        self.assertEquals(css,
+                          ".sprite{background:url(\"%ssprite.png\") 0 0 no-repeat}.sprite-sad{background-position: 0px 0px}.sprite-happy{background-position: -64px 0px}" % os.getcwd())
 
     def test_do_write_css(self):
         sprite = Sprite(self.paths, sprite_path=os.getcwd() + "/tests/")

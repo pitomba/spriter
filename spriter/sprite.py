@@ -68,9 +68,13 @@ class Sprite(object):
         css_line = []
 
         for image in self.images:
-            css_line.append(self.__CSS_CLASS_TEMPLATE.format(CLASS_NAME=image.class_name,
-                                                           POSITION_X=image.sprite_coordinate_x,
-                                                           POSITION_Y=image.sprite_coordinate_y))
+            image_class_name = self.class_name + "-" + image.class_name
+            css_line.append(
+                    self.__CSS_CLASS_TEMPLATE.format(
+                                                CLASS_NAME=image_class_name,
+                                        POSITION_X=image.sprite_coordinate_x,
+                                        POSITION_Y=image.sprite_coordinate_y))
+
         base = self.__CSS_TEMPLATE.format(CLASSES=self.class_name,
                                        ROOT_PATH=self.sprite_url,
                                        SPRITE_NAME=self.sprite_name)
@@ -98,7 +102,7 @@ class Sprite(object):
         for image in self.images:
 
             self.image.paste(image.raw,
-                             (width, 0))#,image.raw)
+                             (width, 0))
             width += image.width
 
     def do_write_image(self):

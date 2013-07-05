@@ -20,7 +20,7 @@ class FileImage(object):
 class Sprite(object):
 
     __CSS_TEMPLATE = ".{CLASSES}{{background:url(\"{ROOT_PATH}{SPRITE_NAME}\") 0 0 no-repeat}}"
-    __CSS_CLASS_TEMPLATE = ".{CLASS_NAME}{{background-position: {POSITION_X}px {POSITION_Y}px}}"
+    __CSS_CLASS_TEMPLATE = ".{CLASSES}.{CLASS_NAME}{{background-position: {POSITION_X}px {POSITION_Y}px}}"
 
     def __init__(self, paths, sprite_path=None,
                  sprite_name=None,
@@ -68,10 +68,9 @@ class Sprite(object):
         css_line = []
 
         for image in self.images:
-            image_class_name = self.class_name + "-" + image.class_name
             css_line.append(
-                    self.__CSS_CLASS_TEMPLATE.format(
-                                                CLASS_NAME=image_class_name,
+                    self.__CSS_CLASS_TEMPLATE.format(CLASSES=self.class_name,
+                                                CLASS_NAME=image.class_name,
                                         POSITION_X=image.sprite_coordinate_x,
                                         POSITION_Y=image.sprite_coordinate_y))
 

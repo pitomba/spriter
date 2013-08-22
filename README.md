@@ -7,7 +7,7 @@ Pitomba provides simple and flexible sprite generator for CSS, using Python.
 Quick start
 =================
 
-Clone the repo, `git clone git://github.com/pitomba/spriter.git`
+Clone the repo, `git clone https://github.com/pitomba/pitomba.git`
 
 pip install -r requirements.txt
 

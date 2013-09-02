@@ -7,8 +7,16 @@ setup(
     name=u'spriter',
     version=VERSION,
     description=u"Pitomba's sprite generator",
-    long_description=u"""Pitomba provides simple and flexible sprite generator
-                        for CSS, using Python.""",
+    long_description=u"""
+                        Pitomba provides simple and flexible optimized sprite
+                        generator for CSS, using Python.
+
+                        Pitomba can process CSS both synchronous and asynchronous as it
+                        provides classes to be used in your python code and
+                        also a watcher that listens to your filesystem and
+                        changes CSS and sprite as soon as a static is changed.
+
+                        """,
     keywords='pitomba sprite css images generator',
     author=u'Romulo Jales',
     author_email='romulo@romulojales.com',

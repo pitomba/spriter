@@ -1,7 +1,8 @@
-Pitomba Sprite Generator
-=================
+#Pitomba
 
-Pitomba provides simple and flexible sprite generator for CSS, using Python.
+##What is Pitomba?
+
+Pitomba it's a simple and flexible sprite generator for CSS, using Python.
 
 Tests Status
 -----------------
@@ -10,6 +11,8 @@ Tests Status
 Pip's downloads
 ----------------
 ![My image](https://pypip.in/d/spriter/badge.png)
+
+
 Quick start
 =================
 
@@ -21,6 +24,17 @@ on Terminal:
 sh demo.sh
 
 Any changes on images diretory, a new sprite will be generated
+
+
+How to Contribute
+=================
+
+Clone the repo, `git clone https://github.com/pitomba/pitomba.git`
+
+pip install -r requirements.txt
+
+python setup.py tests
+
 
 Demo
 =================

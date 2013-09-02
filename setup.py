@@ -6,7 +6,7 @@ from spriter import VERSION
 setup(
     name=u'spriter',
     version=VERSION,
-    description=u"Pitomba's sprite generato",
+    description=u"Pitomba's sprite generator",
     long_description=u"""Pitomba provides simple and flexible sprite generator
                         for CSS, using Python.""",
     keywords='pitomba sprite css images',

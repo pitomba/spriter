@@ -1,3 +1,4 @@
+from sprite import Sprite
 import datetime
 VERSION = "0.0.7"
 

@@ -1,18 +1,14 @@
+[![Travis CI](https://travis-ci.org/pitomba/pitomba.png)](https://travis-ci.org/pitomba/pitomba)
+[![Coverage Status](https://coveralls.io/repos/pitomba/pitomba/badge.png)](https://coveralls.io/r/pitomba/pitomba)
+[![PyPI version](https://badge.fury.io/py/spriter.png)](http://badge.fury.io/py/spriter)
+[![Downloads number](https://pypip.in/d/spriter/badge.png)](https://crate.io/packages/spriter/)
+
 Pitomba
 --------
 
 Pitomba is a simple and flexible sprite generator for CSS, using Python. It can process CSS both
 synchronous and asynchronous as it provides classes to be used in your python code and also a watcher
 that listens to your filesystem and changes CSS and sprite as soon as a static is changed.
-
-Tests Status
------------------
-[![Travis CI](https://travis-ci.org/pitomba/pitomba.png)](https://travis-ci.org/pitomba/pitomba)
-[![Coverage Status](https://coveralls.io/repos/pitomba/pitomba/badge.png)](https://coveralls.io/r/pitomba/pitomba)
-
-Pip's downloads
-----------------
-![My image](https://pypip.in/d/spriter/badge.png)
 
 
 Installation

@@ -52,9 +52,9 @@ class Sprite(object):
         self.css_name = css_name
         self.class_name = class_name
         self.css_path = css_path
-        self._set_sprite_image_dimesion()
+        self._set_sprite_image_dimension()
 
-    def _set_sprite_image_dimesion(self):
+    def _set_sprite_image_dimension(self):
 
         for image in self.images:
 

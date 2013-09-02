@@ -1,8 +1,9 @@
-#Pitomba
+Pitomba
+--------
 
-##What is Pitomba?
-
-Pitomba is a simple and flexible sprite generator for CSS, using Python.
+Pitomba is a simple and flexible sprite generator for CSS, using Python. It can process CSS both
+synchronous and asynchronous as it provides classes to be used in your python code and also a watcher
+that listens to your filesystem and changes CSS and sprite as soon as a static is changed.
 
 Tests Status
 -----------------
@@ -11,10 +12,6 @@ Tests Status
 Pip's downloads
 ----------------
 ![My image](https://pypip.in/d/spriter/badge.png)
-
-Quick start
-=================
-
 
 
 Installation
@@ -41,24 +38,15 @@ Demo
 The source distribution includes demo applications that are not present
 when Pitomba is installed via pip or easy_install, so you may wish to download the source tarball.
 
-on Terminal:
-sh demo.sh
+* [Demo](http://pitomba.org/demo)
 
-Any changes on images diretory, a new sprite will be generated
+Flags used by demo app are provided by [FAMFAMFAM](http://www.famfamfam.com/lab/icons/flags/)
 
-Flags by FAMFAMFAM
-http://www.famfamfam.com/lab/icons/flags/
 
 Contribute
 ----------
 
-* [How to contribute](http://pitomba.org/contribute.html)
-
-Clone the repo, `git clone https://github.com/pitomba/pitomba.git`
-
-pip install -r requirements.txt
-
-python setup.py tests
+* [How to contribute](http://pitomba.org/contribute)
 
 
 Documentation

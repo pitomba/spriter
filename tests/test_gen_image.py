@@ -29,7 +29,11 @@ class TestSprite(unittest.TestCase):
                           ".sprite{background:url(\"%ssprite.png\") 0 0 no-repeat}.sprite.sad{background-position: 0px 0px}.sprite.happy{background-position: -64px 0px}" % os.getcwd())
 
     def test_do_write_css(self):
-        sprite = Sprite(self.paths, sprite_path=os.getcwd() + "/tests/")
+        """Tests whether a CSS can be correctly written or not"""
+        sprite = Sprite(self.paths,
+                        sprite_path=os.getcwd() + "/tests/",
+                        css_path=os.getcwd() + "/tests/")
+
         sprite.do_write_css()
         assert os.path.exists(os.getcwd() + "/tests/sprite.css")
 

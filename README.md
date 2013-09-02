@@ -12,6 +12,10 @@ Pip's downloads
 ----------------
 ![My image](https://pypip.in/d/spriter/badge.png)
 
+Quick start
+=================
+
+
 
 Installation
 ------------

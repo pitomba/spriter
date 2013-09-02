@@ -30,7 +30,7 @@ can be installed with ``pip`` or ``easy_install``.
 Pitomba source code is [hosted on GitHub](https://github.com/pitomba/pitomba).
 
 
-Demo
+Usage
 ------------
 
 It's really simple to test pitomba sprites generator.

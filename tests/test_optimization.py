@@ -11,7 +11,7 @@ import unittest
 class Test(unittest.TestCase):
 
     def setUp(self):
-        self.paths = ["tests/sad.png", "tests/happy.png"]
+        self.paths = ["tests/fixtures/sad.png", "tests/fixtures/happy.png"]
 
     def test_gen_image_when_optimize_arg_is_not_passed(self):
         sprite = Sprite(self.paths)

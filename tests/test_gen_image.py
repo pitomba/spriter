@@ -7,7 +7,7 @@ import unittest
 class TestSprite(unittest.TestCase):
 
     def setUp(self):
-        self.paths = ["tests/sad.png", "tests/happy.png"]
+        self.paths = ["tests/fixtures/sad.png", "tests/fixtures/happy.png"]
 
     def test_content_url_sprite(self):
         sprite = Sprite(self.paths, sprite_url="http://localhost:8000/")

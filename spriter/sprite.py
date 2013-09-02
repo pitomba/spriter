@@ -1,20 +1,15 @@
 from PIL import Image
+from image import FileImage
 import os
 
 
-class URLImage(object):
-    pass
-
-
-class FileImage(object):
+class DefaultImageDoesNotExist(Exception):
+    message = "The default image path must be exist. Not found in: "
 
     def __init__(self, path):
-        self.raw = Image.open(path)
-        self.width = self.raw.size[0]
-        self.height = self.raw.size[1]
-        self.sprite_coordinate_x = None
-        self.sprite_coordinate_y = None
-        self.class_name = os.path.basename(path).split(".")[0]
+        super(DefaultImageDoesNotExist, self).__init__(
+                  self.message)
+        self.message = self.message + path
 
 
 class Sprite(object):
@@ -22,17 +17,30 @@ class Sprite(object):
     __CSS_TEMPLATE = ".{CLASSES}{{background:url(\"{ROOT_PATH}{SPRITE_NAME}\") 0 0 no-repeat}}"
     __CSS_CLASS_TEMPLATE = ".{CLASSES}.{CLASS_NAME}{{background-position: {POSITION_X}px {POSITION_Y}px}}"
 
-    def __init__(self, paths, sprite_path=None,
+    def __init__(self, paths,
+                 sprite_path=None,
                  sprite_name=None,
-                 sprite_url=None, image_format="RGBA", css_path="",
-                 class_name="sprite", css_name="sprite.css",
-                 optimize=False):
+                 sprite_url=None,
+                 image_format="RGBA",
+                 css_path="",
+                 class_name="sprite",
+                 css_name="sprite.css",
+                 optimize=False,
+                 default_path=""):
 
         self.images = []
         self.height = 0
         self.width = 0
+        if default_path is not None and default_path is not "":
+            if not isinstance(default_path, str):
+                raise TypeError(
+                            "The default image path must be a string instance")
+            if not os.path.exists(default_path):
+                raise DefaultImageDoesNotExist(default_path)
+
         for path in paths:
-            self.images.append(FileImage(path))
+            img = FileImage(path, default_path)
+            self.images.append(img)
         if  sprite_path:
             self.sprite_path = sprite_path
         else:

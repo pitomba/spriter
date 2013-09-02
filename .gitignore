@@ -1,5 +1,6 @@
 .settings
 build
+dist/
 spriter.egg-info/
 spriter.css
 *.pyc

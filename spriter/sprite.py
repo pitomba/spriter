@@ -49,9 +49,9 @@ class Sprite(object):
         self.css_name = css_name
         self.class_name = class_name
         self.css_path = css_path
-        self._set_sprite_image_demision()
+        self._set_sprite_image_dimesion()
 
-    def _set_sprite_image_demision(self):
+    def _set_sprite_image_dimesion(self):
 
         for image in self.images:
 
@@ -81,17 +81,18 @@ class Sprite(object):
         css = "".join(css_line)
         return css
 
-    def do_write_css(self, css_name=None):
+    def do_write_css(self):
         """Write css's file"""
-        if not css_name:
-            css_name = self.css_name
+        if not os.path.exists(self.css_path):
+            os.makedirs(self.css_path)
 
-        path = os.path.abspath(os.curdir) + "/" + self.css_path + css_name
+        path = os.path.join(self.css_path, self.css_name)
 
         css_f = open(path, "w")
         css = self.get_css()
         css_f.write(css)
         css_f.close()
+        return path
 
     def gen_image(self):
 
@@ -105,6 +106,7 @@ class Sprite(object):
             width += image.width
 
     def do_write_image(self):
+        """Write sprite file"""
         if not hasattr(self, "image"):
             self.gen_image()
         if not os.path.exists(self.sprite_path):

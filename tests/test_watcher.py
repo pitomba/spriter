@@ -1,6 +1,6 @@
 import os
 import unittest
-from spriter import watcher
+from spriter import spriter_watcher
 
 
 class FakeEvent():
@@ -9,6 +9,7 @@ class FakeEvent():
         self.is_directory = False
         self.src_path = os.path.join(os.path.abspath(os.curdir), 'tests',
                                      'fixtures', 'happy.png')
+        self.event_type = "created"
 
 
 class HandlerTestCase(unittest.TestCase):
@@ -18,11 +19,11 @@ class HandlerTestCase(unittest.TestCase):
 
     def test_dont_handle_when_event_is_directory(self):
         self.event.is_directory = True
-        handler = watcher.Handler()
+        handler = spriter_watcher.Handler()
 
         response = handler.dispatch(self.event)
         self.assertEqual(response, False)
 
     def test_handle_when_event_is_not_directory(self):
-        handler = watcher.Handler()
+        handler = spriter_watcher.Handler()
         handler.dispatch(self.event)

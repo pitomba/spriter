@@ -29,6 +29,6 @@ setup(
     packages=find_packages(),
     package_dir={"spriter": "spriter"},
     include_package_data=True,
-    scripts=['spriter/spriter-watcher.py'],
+    scripts=['spriter/spriter_watcher.py'],
     test_suite="tests"
 )

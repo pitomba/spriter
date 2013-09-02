@@ -1,4 +1,4 @@
 import datetime
-VERSION = "0.0.6"
+VERSION = "0.0.7"
 
-RELEASE_DATE = datetime.datetime(2013, 7, 5)
+RELEASE_DATE = datetime.datetime(2013, 8, 2)

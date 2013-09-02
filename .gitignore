@@ -10,3 +10,5 @@ spriter.css
 .coverage
 .pydevproject
 sprite.css
+tests/sprite.png
+sprite_url.png

@@ -1,5 +1,7 @@
 from PIL import Image
 from spriter.sprite import Sprite
+from tests import Openned
+import mock
 import os
 import unittest
 
@@ -51,3 +53,16 @@ class TestSprite(unittest.TestCase):
         path = sprite.do_write_image()
         sprite.gen_image()
         self.assertTrue(os.path.exists(path))
+
+    def test_image_from_urls(self):
+        with mock.patch("urllib.urlopen") as mck:
+            mck.return_value = Openned("http://pitomba.org/happy.png")
+            mck.return_value = Openned("http://pitomba.org/sad.png")
+            sprite = Sprite(paths=[],
+                            urls_paths=["http://pitomba.org/happy.png",
+                                        "http://pitomba.org/sad.png"],
+                            sprite_name="sprite_url.png")
+            path = sprite.do_write_image()
+            self.assertIn("sprite_url.png", path)
+            compare = Image.open(os.getcwd() + "/tests/fixtures/sprite.png")
+            self.assertEquals(compare.histogram(), sprite.image.histogram())

@@ -1,5 +1,6 @@
 from PIL import Image
 from image import FileImage
+from spriter.image import URLImage
 import os
 
 
@@ -17,7 +18,9 @@ class Sprite(object):
     __CSS_TEMPLATE = ".{CLASSES}{{background:url(\"{ROOT_PATH}{SPRITE_NAME}\") 0 0 no-repeat}}"
     __CSS_CLASS_TEMPLATE = ".{CLASSES}.{CLASS_NAME}{{background-position: {POSITION_X}px {POSITION_Y}px}}"
 
-    def __init__(self, paths,
+    def __init__(self,
+                 paths=[],
+                 urls_paths=[],
                  sprite_path=None,
                  sprite_name=None,
                  sprite_url=None,
@@ -26,11 +29,13 @@ class Sprite(object):
                  class_name="sprite",
                  css_name="sprite.css",
                  optimize=False,
-                 default_path=""):
+                 default_path="",
+                 default_url=""):
 
         self.images = []
         self.height = 0
         self.width = 0
+
         if default_path is not None and default_path is not "":
             if not isinstance(default_path, str):
                 raise TypeError(
@@ -41,6 +46,11 @@ class Sprite(object):
         for path in paths:
             img = FileImage(path, default_path)
             self.images.append(img)
+
+        for path in urls_paths:
+            img = URLImage(path, default_url)
+            self.images.append(img)
+
         if  sprite_path:
             self.sprite_path = sprite_path
         else:

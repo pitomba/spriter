@@ -7,7 +7,8 @@ that listens to your filesystem and changes CSS and sprite as soon as a static i
 
 Tests Status
 -----------------
-![My image](https://travis-ci.org/pitomba/pitomba.png)
+[![Travis CI](https://travis-ci.org/pitomba/pitomba.png)](https://travis-ci.org/pitomba/pitomba)
+[![Coverage Status](https://coveralls.io/repos/pitomba/pitomba/badge.png)](https://coveralls.io/r/pitomba/pitomba)
 
 Pip's downloads
 ----------------

@@ -25,8 +25,6 @@ can be installed with ``pip`` or ``easy_install``.
 
 **Manual installation**: Download the latest source from [PyPI](http://pypi.python.org/pypi/spriter/).
 
-.. parsed-literal::
-
     tar xvzf spriter-$VERSION.tar.gz
     cd spriter-$VERSION
     sudo python setup.py install

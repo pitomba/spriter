@@ -13,6 +13,7 @@ setup(
     author=u'Romulo Jales',
     author_email='romulo@romulojales.com',
     url='http://pitomba.org',
+    download_url='https://github.com/pitomba/pitomba',
     license='Apache License 2.0',
     classifiers=['Development Status :: 5 - Production/Stable',
                  'Intended Audience :: Developers',

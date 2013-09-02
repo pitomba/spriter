@@ -1,4 +1,4 @@
-from sprite import Sprite
+from spriter.sprite import Sprite
 from watchdog.observers import Observer
 import ConfigParser
 import os

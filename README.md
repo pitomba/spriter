@@ -18,6 +18,16 @@ Pip's downloads
 pip install spriter
 
 
+##Demo
+
+on Terminal:
+sh demo.sh
+
+Any changes on images diretory, a new sprite will be generated
+
+Flags by FAMFAMFAM
+http://www.famfamfam.com/lab/icons/flags/
+
 ##Contribute
 
 * [How to contribute](http://pitomba.org/contribute.html)
@@ -28,16 +38,6 @@ pip install -r requirements.txt
 
 python setup.py tests
 
-
-##Demo
-
-on Terminal:
-sh demo.sh
-
-Any changes on images diretory, a new sprite will be generated
-
-Flags by FAMFAMFAM
-http://www.famfamfam.com/lab/icons/flags/
 
 #Documentation
 

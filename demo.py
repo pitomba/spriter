@@ -19,9 +19,13 @@ def gen_sprite():
         break
 
     if files != []:
+        #instantiate Sprite class
         sprite = Sprite(files,
                         #path where sprite will be generated
                         sprite_path=SPRITE_PATH,
+
+                        #optional
+                        sprite_name="demo.png",
 
                         #optional
                         sprite_url="http://pitomba.org/static/demo/",

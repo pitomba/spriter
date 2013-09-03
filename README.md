@@ -33,7 +33,7 @@ Pitomba source code is [hosted on GitHub](https://github.com/pitomba/spriter).
 Usage
 ------------
 
-It's really simple to test pitomba sprites generator.
+It's really simple to use pitomba sprites generator.
 Imagine you have 3 images files at your home's directory: ~/1.png,  ~/2.png, ~/3.png. Then open the python interpreter
 
 ```python

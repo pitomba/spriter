@@ -65,3 +65,9 @@ Documentation
 -------------
 
 * [pitomba.org](http://pitomba.org)
+
+
+License
+-------------
+
+* [MIT License](http://pitomba.mit-license.org/)

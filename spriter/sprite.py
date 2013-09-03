@@ -51,14 +51,6 @@ class Sprite(object):
             img = URLImage(path, default_url)
             self.images.append(img)
 
-        if  sprite_path:
-            self.sprite_path = sprite_path
-        else:
-            self.sprite_path = os.getcwd()
-        if sprite_url:
-            self.sprite_url = sprite_url
-        else:
-            self.sprite_url = self.sprite_path
         if sprite_name:
             self.sprite_name = sprite_name
         else:
@@ -69,8 +61,14 @@ class Sprite(object):
         self.image_format = image_format
         self.css_name = css_name
         self.class_name = class_name
-        self.css_path = css_path
+        self.sprite_path = sprite_path or os.getcwd() + "/"
+        self.css_path = css_path or os.getcwd() + "/"
         self._set_sprite_image_dimension()
+
+        if sprite_url:
+            self.sprite_url = sprite_url
+        else:
+            self.sprite_url = self.sprite_path
 
     def _set_sprite_image_dimension(self):
 
@@ -121,7 +119,6 @@ class Sprite(object):
         width = 0
 
         for image in self.images:
-
             self.image.paste(image.raw,
                              (width, 0))
             width += image.width
@@ -140,5 +137,6 @@ class Sprite(object):
         return path
 
     def gen_sprite(self):
-        self.do_write_css()
-        self.do_write_image()
+        css_path = self.do_write_css()
+        image_path = self.do_write_image()
+        return (css_path, image_path)

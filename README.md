@@ -30,10 +30,25 @@ can be installed with ``pip`` or ``easy_install``.
 Pitomba source code is [hosted on GitHub](https://github.com/pitomba/pitomba).
 
 
-Demo
+Usage
 ------------
+
+It's really simple to test pitomba sprites generator.
+Imagine you have 3 images files at your home's directory: ~/1.png,  ~/2.png, ~/3.png. Then open the python interpreter
+
+```python
+from spriter import Spriter
+sprt = Spriter(["~/1.png", "~/2.png", "~/3.png"])
+css_path, image_path = sprt.gen_sprite()
+print css_path
+print image_path
+```
+
+A more detailed explanation.
 The source distribution includes demo applications that are not present
 when Pitomba is installed via pip or easy_install, so you may wish to download the source tarball.
+
+
 
 * [Demo](http://pitomba.org/demo)
 

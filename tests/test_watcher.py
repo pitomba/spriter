@@ -13,9 +13,11 @@ class FakeEvent():
 
 
 class TestHandlerCase(unittest.TestCase):
-    spriter_watcher.img_dir = "."
-    spriter_watcher.css_dir = "."
-    spriter_watcher.sprite_dir = "."
+    spriter_watcher.img_dir = os.path.join(os.path.abspath(os.curdir), 'tests')
+    spriter_watcher.css_dir = os.path.join(os.path.abspath(os.curdir), 'tests')
+
+    spriter_watcher.sprite_dir = os.path.join(os.path.abspath(os.curdir),
+                                              'tests')
     spriter_watcher.class_name = "test"
 
     def setUp(self):

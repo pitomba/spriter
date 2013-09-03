@@ -1,4 +1,4 @@
-___VERSION 1.0
+VERSION 1.0
 
 * Images From URLS
 * Default Image

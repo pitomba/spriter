@@ -44,6 +44,10 @@ print css_path
 print image_path
 ```
 
+This sprite was generated using the Spriter
+
+![Alt mosaico](http://s.glbimg.com/es/ge/f/mosaico/mosaico/1/201309031416/sprite.png)
+
 A more detailed explanation.
 The source distribution includes demo applications that are not present
 when Pitomba is installed via pip or easy_install, so you may wish to download the source tarball.

@@ -3,7 +3,7 @@ from optparse import OptionParser
 from spriter import VERSION
 from spriter.sprite import Sprite
 from watchdog.observers import Observer
-
+import imghdr
 import ConfigParser
 import os
 import sys
@@ -25,12 +25,17 @@ class Handler(object):
 
         print("Image {0} {1}").format(os.path.basename(event.src_path),
                                       event.event_type)
+        files = []
+        for arg in os.listdir(path):
+            j = os.path.join(path, arg)
+            if imghdr.what(j) is not None:
+                files.append(j)
 
-        files = [os.path.join(path, arq) for arq in os.listdir(path)]
         sprite = Sprite(files,
                         css_path=css_dir,
                         sprite_path=sprite_dir,
                         class_name=class_name)
+
         sprite.gen_sprite()
 
 if __name__ == "__main__":

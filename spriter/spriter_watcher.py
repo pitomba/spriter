@@ -10,6 +10,12 @@ import sys
 import time
 
 
+global img_dir
+global css_dir
+global sprite_dir
+global class_name
+
+
 class Handler(object):
     def dispatch(self, event):
         if event.is_directory:

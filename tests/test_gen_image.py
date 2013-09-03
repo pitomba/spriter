@@ -28,7 +28,7 @@ class TestSprite(unittest.TestCase):
         sprite = Sprite(self.paths)
         css = sprite.get_css()
         self.assertEquals(css,
-                          ".sprite{background:url(\"%ssprite.png\") 0 0 no-repeat}.sprite.sad{background-position: 0px 0px}.sprite.happy{background-position: -64px 0px}" % os.getcwd())
+                          ".sprite{background:url(\"%s/sprite.png\") 0 0 no-repeat}.sprite.sad{background-position: 0px 0px}.sprite.happy{background-position: -64px 0px}" % os.getcwd())
 
     def test_do_write_css(self):
         """Tests whether a CSS can be correctly written or not"""
@@ -64,5 +64,5 @@ class TestSprite(unittest.TestCase):
                             sprite_name="sprite_url.png")
             path = sprite.do_write_image()
             self.assertIn("sprite_url.png", path)
-            compare = Image.open(os.getcwd() + "/tests/fixtures/sprite.png")
+            compare = Image.open(os.getcwd() + "/tests/fixtures/sprite_url.png")
             self.assertEquals(compare.histogram(), sprite.image.histogram())

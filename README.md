@@ -1,5 +1,5 @@
-[![Travis CI](https://travis-ci.org/pitomba/pitomba.png)](https://travis-ci.org/pitomba/pitomba)
-[![Coverage Status](https://coveralls.io/repos/pitomba/pitomba/badge.png)](https://coveralls.io/r/pitomba/pitomba)
+[![Travis CI](https://travis-ci.org/pitomba/spriter.png)](https://travis-ci.org/pitomba/spriter)
+[![Coverage Status](https://coveralls.io/repos/pitomba/spriter/badge.png)](https://coveralls.io/r/pitomba/spriter)
 [![PyPI version](https://badge.fury.io/py/spriter.png)](http://badge.fury.io/py/spriter)
 [![Downloads number](https://pypip.in/d/spriter/badge.png)](https://crate.io/packages/spriter/)
 
@@ -27,7 +27,7 @@ can be installed with ``pip`` or ``easy_install``.
     cd spriter-$VERSION
     sudo python setup.py install
 
-Pitomba source code is [hosted on GitHub](https://github.com/pitomba/pitomba).
+Pitomba source code is [hosted on GitHub](https://github.com/pitomba/spriter).
 
 
 Usage

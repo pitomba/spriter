@@ -28,7 +28,7 @@ class TestSprite(unittest.TestCase):
         sprite = Sprite(self.paths)
         css = sprite.get_css()
         self.assertEquals(css,
-                          ".sprite{background:url(\"%s/sprite.png\") 0 0 no-repeat}.sprite.sad{background-position: 0px 0px}.sprite.happy{background-position: -64px 0px}" % os.getcwd())
+                          ".sprite{background:url(\"%s/sprite.png\") 0 0 no-repeat}.sprite.ssad{background-position: 0px 0px}.sprite.shappy{background-position: -64px 0px}" % os.getcwd())
 
     def test_do_write_css(self):
         """Tests whether a CSS can be correctly written or not"""

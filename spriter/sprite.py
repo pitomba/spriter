@@ -1,8 +1,8 @@
-from PIL import Image
-from .image import FileImage
-from .image import URLImage
-from .image import class_name_function
 import os
+
+from PIL import Image
+
+from spriter.image import FileImage, URLImage, class_name_function
 
 
 class DefaultImageDoesNotExist(Exception):
@@ -16,8 +16,8 @@ class DefaultImageDoesNotExist(Exception):
 
 class Sprite(object):
 
-    __CSS_TEMPLATE = ".{CLASSES}{{background:url(\"{ROOT_PATH}{SPRITE_NAME}\") 0 0 no-repeat}}"
-    __CSS_CLASS_TEMPLATE = ".{CLASSES}.{CLASS_NAME}{{background-position: {POSITION_X}px {POSITION_Y}px}}"
+    __CSS_TEMPLATE = ".{self.class_name}{{background:url(\"{self.sprite_url}{self.sprite_name}\") 0 0 no-repeat}}"
+    __CSS_CLASS_TEMPLATE = ".{self.class_name}.{image.class_name}{{background-position: {image.sprite_coordinate_x}px {image.sprite_coordinate_y}px}}"
 
     def __init__(self,
                  paths=[],
@@ -88,19 +88,11 @@ class Sprite(object):
 
     def get_css(self):
         """given the sprite's css string"""
-        css_line = []
+        css_line = [self.__CSS_TEMPLATE.format(self=self)]
 
         for image in self.images:
             css_line.append(
-                    self.__CSS_CLASS_TEMPLATE.format(CLASSES=self.class_name,
-                                                CLASS_NAME=image.class_name,
-                                        POSITION_X=image.sprite_coordinate_x,
-                                        POSITION_Y=image.sprite_coordinate_y))
-
-        base = self.__CSS_TEMPLATE.format(CLASSES=self.class_name,
-                                       ROOT_PATH=self.sprite_url,
-                                       SPRITE_NAME=self.sprite_name)
-        css_line.insert(0, base)
+                    self.__CSS_CLASS_TEMPLATE.format(self=self, image=image))
         css = "".join(css_line)
         return css
 

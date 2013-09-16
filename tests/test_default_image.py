@@ -26,7 +26,7 @@ class Test(unittest.TestCase):
         sprite.gen_image()
         path = sprite.do_write_image()
         css = sprite.get_css()
-        self.assertIn(".sprite.ERROR", css)
+        self.assertIn(".sprite.serror", css)
         sprite_img = Image.open(path)
         compare = Image.open(os.getcwd() + "/tests/fixtures/with_default.png")
         #This assert the default image is in the sprite

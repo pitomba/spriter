@@ -1,9 +1,15 @@
-from PIL import Image
+# -*- coding: utf-8 -*-
 from StringIO import StringIO
 import os
+import re
 import urllib
+from unicodedata import normalize
+from PIL import Image
+
 
 __all__ = ["FileImage", "URLImage"]
+
+word = re.compile(r'[^\w]')
 
 
 class CantAccessURLImage(Exception):
@@ -11,7 +17,15 @@ class CantAccessURLImage(Exception):
 
 
 def class_name_function(path):
-    return os.path.basename(path).split(".")[0]
+    """The general rule of css's class name is:
+    case insensitive; not preceded by number and, in general, ascii letters.
+    So, the filename will be transformed in lowercase, all non-ascii
+    letters will be change to nothing, all non letter or non number will be
+    change to '-' and started by letter
+    s to avoid numbers-only filenames"""
+    base_name = os.path.basename(path).split(".")[0]
+    path = "s%s" % word.sub("-", base_name.lower().encode("ascii", "ignore"))
+    return path
 
 
 class BaseImage(object):

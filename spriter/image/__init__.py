@@ -19,10 +19,10 @@ class CantAccessURLImage(Exception):
 def class_name_function(path):
     """The general rule of css's class name is:
     case insensitive; not preceded by number and, in general, ascii letters.
-    So, the filename will be transformed in lowercase, all non-ascii
-    letters will be change to nothing, all non letter or non number will be
-    change to '-' and started by letter
-    s to avoid numbers-only filenames"""
+    The filename will be transformed in lowercas;
+    all non-ascii letters will be change to empty string;
+    all non letter or non number will be change to '-';
+    started by letter s to avoid numbers-only filenames"""
     base_name = os.path.basename(path).split(".")[0]
     path = "s%s" % word.sub("-", base_name.lower().encode("ascii", "ignore"))
     return path

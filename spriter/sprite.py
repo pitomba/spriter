@@ -1,6 +1,7 @@
 from PIL import Image
-from image import FileImage
-from spriter.image import URLImage
+from .image import FileImage
+from .image import URLImage
+from .image import class_name_function
 import os
 
 
@@ -28,9 +29,10 @@ class Sprite(object):
                  css_path="",
                  class_name="sprite",
                  css_name="sprite.css",
-                 optimize=False,
+                 optimize=True,
                  default_path="",
-                 default_url=""):
+                 default_url="",
+                 class_name_function=class_name_function):
 
         self.images = []
         self.height = 0
@@ -44,11 +46,13 @@ class Sprite(object):
                 raise DefaultImageDoesNotExist(default_path)
 
         for path in paths:
-            img = FileImage(path, default_path)
+            img = FileImage(path, default_path,
+                            class_name_function=class_name_function)
             self.images.append(img)
 
         for path in urls_paths:
-            img = URLImage(path, default_url)
+            img = URLImage(path, default_url,
+                           class_name_function=class_name_function)
             self.images.append(img)
 
         if sprite_name:
@@ -106,11 +110,9 @@ class Sprite(object):
             os.makedirs(self.css_path)
 
         path = os.path.join(self.css_path, self.css_name)
-
-        css_f = open(path, "w")
-        css = self.get_css()
-        css_f.write(css)
-        css_f.close()
+        with open(path, "w") as css_f:
+            css = self.get_css()
+            css_f.write(css)
         return path
 
     def gen_image(self):
@@ -131,7 +133,8 @@ class Sprite(object):
             os.makedirs(self.sprite_path)
         path = os.path.join(self.sprite_path, self.sprite_name)
         if self.optimize:
-            self.image.save(path, "PNG", optimize=1)
+            self.image.save(path, "PNG",
+                            optimize=1, compress_level=2, compress_type=1)
         else:
             self.image.save(path, "PNG")
         return path

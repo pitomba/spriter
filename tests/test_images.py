@@ -1,8 +1,10 @@
+import unittest
+
 from PIL import Image
+import mock
+
 from spriter.image import URLImage
 from tests import Openned
-import mock
-import unittest
 
 
 class TestImage(unittest.TestCase):

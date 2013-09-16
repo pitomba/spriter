@@ -10,9 +10,18 @@ class CantAccessURLImage(Exception):
     pass
 
 
+def class_name_function(path):
+    return os.path.basename(path).split(".")[0]
+
+
 class BaseImage(object):
-    def __init__(self, path):
-        self.class_name = os.path.basename(path).split(".")[0]
+
+    def __init__(self, path, class_name=None,
+                 class_name_function=class_name_function):
+        if class_name is None:
+            self.class_name = class_name_function(path)
+        else:
+            self.class_name = class_name
         self.sprite_coordinate_x = None
         self.sprite_coordinate_y = None
 
@@ -23,8 +32,9 @@ class BaseImage(object):
 
 
 class URLImage(BaseImage):
-    def __init__(self, url, default_url=""):
-        super(URLImage, self).__init__(url)
+    def __init__(self, url, default_url="", class_name=None,
+                 class_name_function=class_name_function):
+        super(URLImage, self).__init__(url, class_name, class_name_function)
         img = self.__opener(url, default_url)
         self._set_image(img)
 
@@ -37,8 +47,9 @@ class URLImage(BaseImage):
 
 
 class FileImage(BaseImage):
-    def __init__(self, path, default_path=""):
-        super(FileImage, self).__init__(path)
+    def __init__(self, path, default_path="", class_name=None,
+                 class_name_function=class_name_function):
+        super(FileImage, self).__init__(path, class_name, class_name_function)
         if (not os.path.exists(path)) and (default_path != ""):
             path = default_path
         self._set_image(path)

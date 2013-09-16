@@ -1,5 +1,14 @@
-VERSION 1.0
+VERSION 1.0.1
+-------------
+Bugs Fixes
+--------------
+* Bug FIX: Css' class name based on file base name.
 
+Improviments
+--------------
+
+VERSION 1.0
+-------------
 * Images From URLS
 * Default Image
 * Default Image URL

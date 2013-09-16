@@ -6,6 +6,7 @@ Bugs Fixes
 
 Improviments
 
+* Function to control css class name generation
 
 VERSION 1.0
 -------------

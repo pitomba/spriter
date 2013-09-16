@@ -67,6 +67,43 @@ Contribute
 
 Documentation
 -------------
+Spriter attributes:
+
+* paths=[], List of images locals paths
+* urls_paths=[], List of urls images
+* sprite_path=None, where the sprite will save the sprite's file. If none, will be save at CWD
+* sprite_name=None, The name of sprite's file. If none, the name is sprite.png
+* sprite_url=None, the sprite url to write in css, if none will consider sprite_path
+* image_format="RGBA", To save as png
+* css_path="", where the sprite will save the sprite's file. If "", will be save at CWD
+* class_name="sprite", The name of base css class
+* css_name="sprite.css", The name of css file
+* optimize=True, Save image optimized 
+* default_path="", Path for the image that will be used as faultback when Spriter can't find an image
+* default_url="", Same as default_path but instead of Path use an URL
+* class_name_function=class_name_function, function to generate a css item class name.
+
+Sprites works with paths and urls_paths at same time. So if you have a local image and an Internet image the Spriter will merge the files onto a sprite file.
+
+class_name_function:
+
+    """The general rule of css's class name is:
+    case insensitive; not preceded by number and, in general, ascii letters.
+    The filename will be transformed in lowercas;
+    all non-ascii letters will be change to empty string;
+    all non letter or non number will be change to '-';
+    started by letter s to avoid numbers-only filenames"""
+    
+So, The css class name of an image named "123.png" will be: "s123"
+
+
+Spriter functions:
+
+* get_css(), get only the css string.
+* do_write_css(), Do write the CSS' file at css_path with class_name.
+* gen_image(), Get sprite image's bytes.
+* do_write_image(), Do write IMAGE's file at css_path with class_name.
+* gen_sprite(), Do write both IMAGE and CSS files.
 
 * [pitomba.org](http://pitomba.org)
 

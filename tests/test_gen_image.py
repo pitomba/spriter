@@ -66,3 +66,9 @@ class TestSprite(unittest.TestCase):
             self.assertIn("sprite_url.png", path)
             compare = Image.open(os.getcwd() + "/tests/fixtures/sprite_url.png")
             self.assertEquals(compare.histogram(), sprite.image.histogram())
+
+    def test_webp_generation(self):
+        sprite = Sprite(self.paths, sprite_path=os.getcwd() + "/tests/",
+                        image_format="RGBA", image_extension="webp",
+                        sprite_name="sprite.webp")
+        sprite.do_write_image()

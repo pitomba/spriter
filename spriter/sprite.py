@@ -26,6 +26,7 @@ class Sprite(object):
                  sprite_name=None,
                  sprite_url=None,
                  image_format="RGBA",
+                 image_extension="PNG",
                  css_path="",
                  class_name="sprite",
                  css_name="sprite.css",
@@ -61,7 +62,7 @@ class Sprite(object):
             self.sprite_name = "sprite.png"
 
         self.optimize = optimize
-
+        self.image_extension = image_extension
         self.image_format = image_format
         self.css_name = css_name
         self.class_name = class_name
@@ -113,7 +114,8 @@ class Sprite(object):
         width = 0
 
         for image in self.images:
-            self.image.paste(image.raw,
+            img = image.raw.convert(self.image_format)
+            self.image.paste(img,
                              (width, 0))
             width += image.width
 
@@ -125,10 +127,12 @@ class Sprite(object):
             os.makedirs(self.sprite_path)
         path = os.path.join(self.sprite_path, self.sprite_name)
         if self.optimize:
-            self.image.save(path, "PNG",
-                            optimize=1, compress_level=2, compress_type=1)
+            self.image.save(path, self.image_extension,
+                            optimize=1,
+                            compress_level=2,
+                            compress_type=1)
         else:
-            self.image.save(path, "PNG")
+            self.image.save(path, self.image_extension)
         return path
 
     def gen_sprite(self):

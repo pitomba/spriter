@@ -18,7 +18,7 @@ setup(
 
                         """,
     keywords='pitomba sprite css images generator',
-    author=u'Romulo Jales',
+    author=u'Rômulo Jales',
     author_email='romulo@romulojales.com',
     url='http://pitomba.org',
     download_url='https://github.com/pitomba/pitomba',

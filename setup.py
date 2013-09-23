@@ -17,7 +17,7 @@ setup(
                         changes CSS and sprite as soon as a static is changed.
 
                         """,
-    keywords='pitomba sprite css images generator',
+    keywords='pitomba sprite css images generator png webp',
     author=u'Rômulo Jales',
     author_email='romulo@romulojales.com',
     url='http://pitomba.org',

@@ -58,13 +58,6 @@ when Spriter is installed via pip or easy_install, so you may wish to download t
 
 Flags used by demo app are provided by [FAMFAMFAM](http://www.famfamfam.com/lab/icons/flags/)
 
-
-Contribute
-----------
-
-* [How to contribute](http://pitomba.org/contribute)
-
-
 Documentation
 -------------
 Spriter attributes:
@@ -111,17 +104,33 @@ Spriter functions:
 WebP Support
 ------------
 
-First, be sure complete google's webp install instruction before proceed. 
+First, be sure complete [google's webp install instructions](https://developers.google.com/speed/webp/docs/precompiled) before proceed. 
 
-(https://developers.google.com/speed/webp/docs/precompiled)
+
 
 Then, (re-)install Pillow's library.
 
 To save an sprite as webp be sure the image_extension property equals to WEBP, and the sprite's name with webp extension (sprite.webp).
 
+```python
+from spriter import Spriter
+sprt = Spriter(["~/1.png", "~/2.png", "~/3.png"], image_extension="WEBP", sprite_name="sprite.webp")
+sprt.do_write_image()
+```
+
 Since webp's format is not fully supported by all major web browser use it when you have absolute certain that your clients have support to this extension.
 
-Visit "Can I Use's website" (http://caniuse.com/webp) to follow up the evolution of support 
+Visit [Can I Use's website](http://caniuse.com/webp) to follow up the evolution of support 
+
+
+Contribute
+----------
+
+Get touch via github. Don't be shy, open an issue or mail us. We speak PT_BR too. ;) 
+
+Or following up [How to contribute](http://pitomba.org/contribute)
+
+
 
 License
 -------------

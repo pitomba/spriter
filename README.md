@@ -82,6 +82,7 @@ Spriter attributes:
 * default_path="", Path for the image that will be used as faultback when Spriter can't find an image
 * default_url="", Same as default_path but instead of Path use an URL
 * class_name_function=class_name_function, function to generate a css item class name.
+* image_extension="PNG", extension to save sprite image
 
 Sprites works with paths and urls_paths at same time. So if you have a local image and an Internet image the Spriter will merge the files onto a sprite file.
 
@@ -107,6 +108,20 @@ Spriter functions:
 
 * [pitomba.org](http://pitomba.org)
 
+WebP Support
+------------
+
+First, be sure complete google's webp install instruction before proceed. 
+
+(https://developers.google.com/speed/webp/docs/precompiled)
+
+Then, (re-)install Pillow's library.
+
+To save an sprite as webp be sure the image_extension property equals to WEBP, and the sprite's name with webp extension (sprite.webp).
+
+Since webp's format is not fully supported by all major web browser use it when you have absolute certain that your clients have support to this extension.
+
+Visit "Can I Use's website" (http://caniuse.com/webp) to follow up the evolution of support 
 
 License
 -------------

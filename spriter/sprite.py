@@ -30,6 +30,7 @@ class Sprite(object):
                  css_path="",
                  class_name="sprite",
                  css_name="sprite.css",
+                 css_url=None,
                  optimize=True,
                  default_path="",
                  default_url="",
@@ -74,6 +75,11 @@ class Sprite(object):
             self.sprite_url = sprite_url
         else:
             self.sprite_url = self.sprite_path
+
+        if css_url is not None:
+            self.css_url = css_url
+        else:
+            self.css_url = self.css_path
 
     def _set_sprite_image_dimension(self):
 

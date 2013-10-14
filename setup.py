@@ -33,10 +33,10 @@ setup(
     test_suite="tests",
 
     install_requires=[
-        "Pillow==2.1.0"
-        "PyYAML==3.10"
-        "pathtools==0.1.2"
-        "watchdog==0.6.0"
+        "Pillow==2.1.0",
+        "PyYAML==3.10",
+        "pathtools==0.1.2",
+        "watchdog==0.6.0",
         "argh==0.15.1"
     ]
 )

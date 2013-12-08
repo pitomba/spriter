@@ -1,3 +1,7 @@
+sprite_url.png
+nop.png
+op.png
+sprite.png
 .settings
 build
 dist/
@@ -11,3 +15,5 @@ spriter.css
 .pydevproject
 sprite.css
 tests/sprite.png
+tests/sprite.webp
+.idea

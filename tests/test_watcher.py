@@ -7,8 +7,7 @@ class FakeEvent():
 
     def __init__(self):
         self.is_directory = False
-        self.src_path = os.path.join(os.path.abspath(os.curdir), 'tests',
-                                     'fixtures', 'happy.png')
+        self.src_path = os.path.join(os.path.abspath(os.curdir), 'tests', 'fixtures', 'happy.png')
         self.event_type = "created"
 
 

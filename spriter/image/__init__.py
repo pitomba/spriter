@@ -47,16 +47,17 @@ class BaseImage(object):
 
 class URLImage(BaseImage):
     def __init__(self, url, default_url="", class_name=None,
-                 class_name_function=class_name_function):
+                 class_name_function=class_name_function,
+                 proxy=None):
         super(URLImage, self).__init__(url, class_name, class_name_function)
         img = self.__opener(url, default_url)
         self._set_image(img)
 
-    def __opener(self, url, default):
-        img = urllib.urlopen(url)
+    def __opener(self, url, default, proxy=None):
+        img = urllib.urlopen(url, proxies=proxy)
         if img.code != 200:
             #presumed default is http: 200!
-            img = urllib.urlopen(default)
+            img = urllib.urlopen(default, proxies=proxy)
         return StringIO(img.read())
 
 

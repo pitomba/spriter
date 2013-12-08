@@ -2,7 +2,7 @@ import os
 
 from PIL import Image
 
-from spriter.image import FileImage, URLImage, class_name_function
+from spriter.image import FileImage, URLImage, class_name_function as cnf
 
 
 class DefaultImageDoesNotExist(Exception):
@@ -34,7 +34,8 @@ class Sprite(object):
                  optimize=True,
                  default_path="",
                  default_url="",
-                 class_name_function=class_name_function):
+                 class_name_function=cnf,
+                 proxy=None):
 
         self.images = []
         self.height = 0
@@ -54,7 +55,8 @@ class Sprite(object):
 
         for path in urls_paths:
             img = URLImage(path, default_url,
-                           class_name_function=class_name_function)
+                           class_name_function=class_name_function,
+                           proxy=proxy)
             self.images.append(img)
 
         if sprite_name:
@@ -133,7 +135,8 @@ class Sprite(object):
             os.makedirs(self.sprite_path)
         path = os.path.join(self.sprite_path, self.sprite_name)
         if self.optimize:
-            self.image.save(path, self.image_extension,
+            self.image.save(path,
+                            self.image_extension,
                             optimize=1,
                             compress_level=2,
                             compress_type=1)

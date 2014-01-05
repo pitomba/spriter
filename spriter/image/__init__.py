@@ -3,7 +3,6 @@ from StringIO import StringIO
 import os
 import re
 import urllib
-from unicodedata import normalize
 from PIL import Image
 
 

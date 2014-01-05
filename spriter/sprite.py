@@ -1,7 +1,7 @@
 import os
-
+import StringIO
 from PIL import Image
-
+import base64
 from spriter.image import FileImage, URLImage, class_name_function as cnf
 
 
@@ -17,6 +17,7 @@ class DefaultImageDoesNotExist(Exception):
 class Sprite(object):
 
     __CSS_TEMPLATE = ".{self.class_name}{{background:url(\"{self.sprite_url}{self.sprite_name}\") 0 0 no-repeat}}"
+    __CSS_TEMPLATE_BASE64 = ".{self.class_name}{{background:url(data:image/{image_extension};base64,{base64img}) 0 0 no-repeat}}"
     __CSS_CLASS_TEMPLATE = ".{self.class_name}.{image.class_name}{{background-position: {image.sprite_coordinate_x}px {image.sprite_coordinate_y}px}}"
 
     def __init__(self,
@@ -36,6 +37,7 @@ class Sprite(object):
                  default_url="",
                  class_name_function=cnf,
                  proxy=None):
+
 
         self.images = []
         self.height = 0
@@ -84,7 +86,7 @@ class Sprite(object):
             self.css_url = self.css_path
 
     def _set_sprite_image_dimension(self):
-
+        """Calculate the image dimension"""
         for image in self.images:
 
             image.sprite_coordinate_y = 0
@@ -92,16 +94,34 @@ class Sprite(object):
             if self.height < image.height:
                 self.height = image.height
 
-            image.sprite_coordinate_x = -(self.width)
+            image.sprite_coordinate_x = - self.width
             self.width += image.width
 
-    def get_css(self):
+    def get_base64_str(self):
+        """Returns the base64 str of the sprite"""
+        if not hasattr(self, "image"):
+            self.gen_image()
+        base64buffer = StringIO.StringIO()
+        self._save_image(base64buffer)
+        image_str = base64buffer.getvalue()
+        base64buffer.close()
+        base64str = base64.b64encode(image_str)
+        return base64str
+
+    def get_css_base64(self):
+        css_line = [self.__CSS_TEMPLATE_BASE64.format(self=self,
+                                                 image_extension=self.image_extension.lower(),
+                                                 base64img=self.get_base64_str())]
+        return self.__get_css_classes(css_line)
+
+    def get_css(self, is_base64=False):
         """given the sprite's css string"""
         css_line = [self.__CSS_TEMPLATE.format(self=self)]
+        return self.__get_css_classes(css_line)
 
+    def __get_css_classes(self, css_line):
         for image in self.images:
-            css_line.append(
-                    self.__CSS_CLASS_TEMPLATE.format(self=self, image=image))
+            css_line.append(self.__CSS_CLASS_TEMPLATE.format(self=self, image=image))
         css = "".join(css_line)
         return css
 
@@ -117,7 +137,7 @@ class Sprite(object):
         return path
 
     def gen_image(self):
-
+        """Generate Sprite's Image, do not write or create the file"""
         self.image = Image.new(self.image_format, (self.width, self.height))
         width = 0
 
@@ -134,17 +154,23 @@ class Sprite(object):
         if not os.path.exists(self.sprite_path):
             os.makedirs(self.sprite_path)
         path = os.path.join(self.sprite_path, self.sprite_name)
+        self._save_image(path)
+        return path
+
+    def _save_image(self, where_to_save):
+        """Create the sprite.
+        Where_to_save can be the file path or an string buffer"""
         if self.optimize:
-            self.image.save(path,
+            self.image.save(where_to_save,
                             self.image_extension,
                             optimize=1,
                             compress_level=2,
                             compress_type=1)
         else:
-            self.image.save(path, self.image_extension)
-        return path
+            self.image.save(where_to_save, self.image_extension)
 
     def gen_sprite(self):
+        """Write image and css files"""
         css_path = self.do_write_css()
         image_path = self.do_write_image()
-        return (css_path, image_path)
+        return css_path, image_path

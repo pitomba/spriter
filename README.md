@@ -94,10 +94,13 @@ So, The css class name of an image named "123.png" will be: "s123"
 Spriter functions:
 
 * get_css(), get only the css string.
+* get_css_base64(), get the css string with base64 image encode.
+* get_base64_str(), get the base64 sprite's img.
 * do_write_css(), Do write the CSS' file at css_path with class_name.
 * gen_image(), Get sprite image's bytes.
 * do_write_image(), Do write IMAGE's file at css_path with class_name.
 * gen_sprite(), Do write both IMAGE and CSS files.
+
 
 * [pitomba.org](http://pitomba.org)
 
@@ -105,8 +108,6 @@ WebP Support
 ------------
 
 First, be sure complete [google's webp install instructions](https://developers.google.com/speed/webp/docs/precompiled) before proceed. 
-
-
 
 Then, (re-)install Pillow's library.
 

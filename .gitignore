@@ -17,3 +17,4 @@ sprite.css
 tests/sprite.png
 tests/sprite.webp
 .idea
+htmlcov

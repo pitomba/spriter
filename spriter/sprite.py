@@ -114,25 +114,28 @@ class Sprite(object):
                                                  base64img=self.get_base64_str())]
         return self.__get_css_classes(css_line)
 
-    def get_css(self, is_base64=False):
-        """given the sprite's css string"""
-        css_line = [self.__CSS_TEMPLATE.format(self=self)]
-        return self.__get_css_classes(css_line)
-
     def __get_css_classes(self, css_line):
         for image in self.images:
             css_line.append(self.__CSS_CLASS_TEMPLATE.format(self=self, image=image))
         css = "".join(css_line)
         return css
 
-    def do_write_css(self):
+    def get_css(self, is_base64=False):
+        """given the sprite's css string"""
+        css_line = [self.__CSS_TEMPLATE.format(self=self)]
+        return self.__get_css_classes(css_line)
+
+    def do_write_css(self, is_base64=False):
         """Write css's file"""
         if not os.path.exists(self.css_path):
             os.makedirs(self.css_path)
 
         path = os.path.join(self.css_path, self.css_name)
         with open(path, "w") as css_f:
-            css = self.get_css()
+            if is_base64:
+                css = self.get_css_base64()
+            else:
+                css = self.get_css()
             css_f.write(css)
         return path
 
@@ -169,8 +172,11 @@ class Sprite(object):
         else:
             self.image.save(where_to_save, self.image_extension)
 
-    def gen_sprite(self):
+    def gen_sprite(self, is_base64=False):
         """Write image and css files"""
-        css_path = self.do_write_css()
-        image_path = self.do_write_image()
+        css_path = self.do_write_css(is_base64)
+        if not is_base64:
+            image_path = self.do_write_image()
+        else:
+            image_path = None
         return css_path, image_path

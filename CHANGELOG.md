@@ -1,3 +1,11 @@
+VERSION 1.2.1
+-------------
+* Css's files with Base64 sprites
+
+VERSION 1.2
+-------------
+* Base64 sprites
+
 VERSION 1.0.1
 -------------
 Bugs Fixes

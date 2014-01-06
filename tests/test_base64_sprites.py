@@ -15,7 +15,21 @@ class TestBase64Images(unittest.TestCase):
         img = self.sprite.get_base64_str()
         self.assertEquals(img, HAPPY_BASE64)
 
-    def test_something(self):
+    def test_get_css_str_with_base64_sprite(self):
         css_template = self.sprite.get_css_base64()
         self.assertIn("image/png", css_template)
         self.assertIn(HAPPY_BASE64, css_template)
+
+    def test_gen_css_file_with_base64_sprite(self):
+        css_path = self.sprite.do_write_css(is_base64=True)
+        with open(css_path) as arq:
+            css_str = arq.read()
+        self.assertIn(HAPPY_BASE64, css_str)
+
+
+    def test_gen_sprite_files_with_base64_sprite(self):
+        css_path, image_path = self.sprite.gen_sprite(is_base64=True)
+        with open(css_path) as arq:
+            css_str = arq.read()
+        self.assertIn(HAPPY_BASE64, css_str)
+        self.assertIsNone(image_path)

@@ -5,6 +5,7 @@ before_install:
  -  sudo apt-get install libwebp-dev
 install:
   - pip install -r requirements-dev.txt --use-mirrors
+  - pip install PIL
 script:
   - coverage run --source=spriter setup.py test
 after_script:

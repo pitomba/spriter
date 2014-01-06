@@ -124,6 +124,45 @@ Since webp's format is not fully supported by all major web browser use it when 
 Visit [Can I Use's website](http://caniuse.com/webp) to follow up the evolution of support 
 
 
+Base64 Support
+------------
+
+Since version 1.2 is possibile to generate base64 sprite, i.e without generate the sprite files and put directly in css's string (file).
+
+To get the base64 strings:
+
+```python
+from spriter import Spriter
+sprt = Spriter(["~/1.png", "~/2.png", "~/3.png"])
+image_str = sprt.get_base64_str()
+```
+
+To get the css's string with base64 sprite string:
+
+```python
+from spriter import Spriter
+sprt = Spriter(["~/1.png", "~/2.png", "~/3.png"])
+css_str = sprt.get_css_base64()
+```
+
+If you want generate the css file:
+
+```python
+from spriter import Spriter
+sprt = Spriter(["~/1.png", "~/2.png", "~/3.png"])
+css_path = sprt.do_write_css(is_base64=True)
+```
+
+Or
+
+```python
+from spriter import Spriter
+sprt = Spriter(["~/1.png", "~/2.png", "~/3.png"])
+css_path, image_path = sprt.gen_sprite(is_base64=True)
+```
+
+the last script don't write the image file (i.e, image path is None).
+
 Contribute
 ----------
 

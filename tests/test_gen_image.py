@@ -4,7 +4,7 @@ from tests import Openned
 import mock
 import os
 import unittest
-
+import datetime
 
 class TestSprite(unittest.TestCase):
 
@@ -21,8 +21,8 @@ class TestSprite(unittest.TestCase):
         sprite = Sprite(self.paths)
 
         #128 each image has 64 px
-        assert sprite.width == 64 + 64
-        assert sprite.height == 64
+        self.assertEqual(sprite.width, 64 + 64)
+        self.assertEqual(sprite.height, 64)
 
     def test_css_format(self):
         sprite = Sprite(self.paths)
@@ -72,3 +72,29 @@ class TestSprite(unittest.TestCase):
                         image_format="RGBA", image_extension="webp",
                         sprite_name="sprite.webp")
         sprite.do_write_image()
+
+
+    def test_create_css_path(self):
+        path = os.path.join(os.getcwd(), "css_path" + datetime.datetime.now().strftime("%Y%M%d%H%M%S"))
+        self.assertFalse(os.path.exists(path))
+        sprite = Sprite(self.paths, css_path=path)
+        css_path = sprite.do_write_css()
+        self.assertTrue(os.path.exists(path))
+        self.assertIn(path, css_path)
+        os.remove(css_path)
+        os.rmdir(path)
+
+
+    def test_create_sprite_path(self):
+        path = os.path.join(os.getcwd(), "sprite_path" + datetime.datetime.now().strftime("%Y%M%d%H%M%S"))
+        self.assertFalse(os.path.exists(path))
+        sprite = Sprite(self.paths, sprite_path=path)
+        sprite_path = sprite.do_write_image()
+        self.assertTrue(os.path.exists(path))
+        self.assertIn(path, sprite_path)
+        os.remove(sprite_path)
+        os.rmdir(path)
+
+    def test_format_css_url(self):
+        sprite = Sprite(self.paths, css_url="http://localhost/sprite.css")
+        self.assertEquals(sprite.css_url, "http://localhost/sprite.css")

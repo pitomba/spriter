@@ -1,5 +1,6 @@
 [![Travis CI](https://travis-ci.org/pitomba/spriter.png?branch=master)](https://travis-ci.org/pitomba/spriter)
 [![Coverage Status](https://coveralls.io/repos/pitomba/spriter/badge.png)](https://coveralls.io/r/pitomba/spriter)
+[![Requirements Status](https://requires.io/github/pitomba/spriter/requirements.png?branch=master)](https://requires.io/github/pitomba/spriter/requirements/?branch=master)
 [![PyPI version](https://pypip.in/v/spriter/badge.png)](https://pypip.in/v/spriter/)
 [![Downloads number](https://pypip.in/d/spriter/badge.png)](https://crate.io/packages/spriter/)
 

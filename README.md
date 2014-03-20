@@ -177,3 +177,7 @@ License
 -------------
 
 * [MIT License](http://pitomba.mit-license.org/)
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/pitomba/spriter/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+

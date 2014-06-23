@@ -1,4 +1,5 @@
 from PIL import Image
+
 from spriter.sprite import Sprite
 from tests import Openned
 import mock
@@ -68,10 +69,11 @@ class TestSprite(unittest.TestCase):
             self.assertEquals(compare.histogram(), sprite.image.histogram())
 
     def test_webp_generation(self):
-        sprite = Sprite(self.paths, sprite_path=os.getcwd() + "/tests/",
-                        image_format="RGBA", image_extension="webp",
-                        sprite_name="sprite.webp")
-        sprite.do_write_image()
+        if  hasattr(Image.core,  "webp_decoder"):
+            sprite = Sprite(self.paths, sprite_path=os.getcwd() + "/tests/",
+                            image_format="RGBA", image_extension="webp",
+                            sprite_name="sprite.webp")
+            sprite.do_write_image()
 
 
     def test_create_css_path(self):

@@ -17,7 +17,7 @@ class DefaultImageDoesNotExist(Exception):
 class Sprite(object):
 
     __CSS_TEMPLATE = ".{self.class_name}{{background:url(\"{self.sprite_url}{self.sprite_name}\") 0 0 no-repeat;display:inline-block}}"
-    __CSS_TEMPLATE_BASE64 = ".{self.class_name}{{background:url(data:image/{image_extension};base64,{base64img}) 0 0 no-repeat}}"
+    __CSS_TEMPLATE_BASE64 = ".{self.class_name}{{background:url(data:image/{image_extension};base64,{base64img}) 0 0 no-repeat;display:inline-block}}"
     __CSS_CLASS_TEMPLATE = ".{self.class_name}.{image.class_name}{{background-position: {image.sprite_coordinate_x}px {image.sprite_coordinate_y}px;width:{image.width}px;height:{image.height}px}}"
 
     def __init__(self,
